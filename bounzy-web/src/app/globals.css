@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #D4D3D1;
+  --bg-secondary: #FAFAFA;
+  --bg-overlay: #291D00;
+  --text-primary: #171717;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --accent: #934910;
+  --accent-hover: #B05A15;
+  --border: rgba(23, 23, 23, 0.1);
+  --grain-opacity: 0.03;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #141414;
+  --bg-overlay: #1A1A1A;
+  --text-primary: #EDEEF0;
+  --text-secondary: #A0A0A0;
+  --text-muted: #666666;
+  --accent: #D4752A;
+  --accent-hover: #E8863B;
+  --border: rgba(237, 238, 240, 0.1);
+  --grain-opacity: 0.02;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .tracking-ultra {
+    letter-spacing: 0.3em;
+  }
+
+  .tracking-wide-custom {
+    letter-spacing: 0.15em;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px var(--text-primary);
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-stroke-accent {
+    -webkit-text-stroke: 2px var(--accent);
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-4 bg-[var(--bg-overlay)] text-white font-medium tracking-wide-custom uppercase text-sm;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:bg-[var(--accent)] hover:scale-[1.02];
+  }
+
+  .btn-outline {
+    @apply px-8 py-4 border border-[var(--text-primary)] text-[var(--text-primary)] font-medium tracking-wide-custom uppercase text-sm;
+    @apply transition-all duration-300 ease-out bg-transparent;
+    @apply hover:bg-[var(--text-primary)] hover:text-[var(--bg-primary)];
+  }
+
+  .nav-link {
+    @apply text-[var(--text-secondary)] uppercase text-xs font-medium tracking-wide-custom;
+    @apply transition-colors duration-300;
+    @apply hover:text-[var(--accent)];
+  }
+
+  .section-heading {
+    @apply text-xs font-medium uppercase tracking-ultra text-[var(--text-muted)] mb-8;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+    @apply hover:translate-y-[-4px] hover:shadow-2xl;
+  }
+}
